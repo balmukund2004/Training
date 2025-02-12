@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Candidate List</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style type="text/css">
+        
+
+*{margin: 0; padding: 0; box-sizzing:border-box;}
+
+.main-div{
+
+    width: 100%; height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.center{
+    width: 90%; height: 80vh;
+    background: -webkit-linear-gradient(left,#5dade2,#00c6ff);
+    padding: 20px 0 0 0;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .03);
+    border-radius: 10px;
+}
+
+.container {
+    text-align: center;
+    margin: 20px;
+
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+    </style>
+
+</head>
+<body>
+
+   <div class="main-div">
+    <div class="center">
+    <div class="container">
+        <h1>List of Candidates for Web Developer Job</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>  
+                    <th>MOBILE</th>
+                    <th>EMAIL</th>
+                    <th colspan="2">OPERATION</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for d in details %}
+                <tr>
+                    <td>{{d.0}}</td>
+                    <td>{{d.1}}</td>
+                    <td>{{d.3}}</td>
+                    <td>{{d.2}}</td>
+
+
+                    <td><a href="{% url 'update_userdata' %}?v={{d.0}}"> <img src="https://img.icons8.com/?size=100&id=UEDPdTII1R9U&format=png&color=000000" width="40px" height="40px"> </a> </td> 
+                    
+                    <td><a href="{% url 'deleteuserdata' %}?v={{d.0}}"> <img src="https://img.icons8.com/?size=100&id=102350&format=png&color=000000" width="40px" height="40px"> </a> </td> 
+                    
+                </tr>
+                {% endfor %}
+                </tbody>
+        </table>
+    </div>
+    </div>
+  </div> 
+</body>
+</html>

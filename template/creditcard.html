@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Credit Card Fraud Detection</title>
+    <style type="text/css">
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+    color: #222; /* Darker text color */
+    font-size: 24px; /* Adjust size */
+    margin-bottom: 20px; /* Add spacing below */
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+        
+
+
+    </style>
+</head>
+<body>
+
+   <div class="container">
+    <h2>Enter Transaction Details</h2>
+    <form method="POST" action="{% url 'predict_fraud' %}">
+        {% csrf_token %}
+        <label for="feature1">Transaction Amount:</label>
+        <input type="text" name="Transaction Amount" required><br><br>
+        
+        <label for="feature2">Transaction Frequency:</label>
+        <input type="text" name="Transaction Frequency" required><br><br>
+        
+        <label for="feature3">Account Age (Months):</label>
+        <input type="text" name="Account Age (Months)" required><br><br>
+
+        <label for="feature4">Location Mismatch:</label>
+        <input type="text" name="Location Mismatch" required><br><br>
+
+        <label for="feature5">Time of Transaction:</label>
+        <input type="text" name="Time of Transaction" required><br><br>
+
+
+        
+        <!-- Add more input fields based on your model's features -->
+        
+        <button type="submit">Predict</button>
+
+         {% if result %}
+        <h3  class="result">Prediction Result: {{ result }}</h3>
+    {% endif %}
+    </form>
+  </div>   
+</body>
+</html>

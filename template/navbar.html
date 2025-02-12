@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Landing Page</title>
+	<style type="text/css">
+		body{
+			margin: 0px;
+			padding: 0px;
+		}
+		.nav{
+			display: flex;
+			background-color: yellow;
+		}
+		.list{
+			display:flex;
+			margin-left: 310px;
+
+		}
+		button{
+			padding-top: 9px;
+			padding-bottom: 9px;
+			padding-left: 15px;
+			padding-right: 15px;
+			margin-left: 220px;
+		}
+	</style>
+</head> <a href=""></a>
+<body>
+	<div>
+	<nav class="nav">
+		<li class="list">
+			<ul>Home</ul>
+			<ul>Gallery</ul>
+			<ul><a href="{% url 'userdata' %}"></a> Users</ul> 
+			<ul>Support</ul>
+		</li>
+		  <button><a href="{% url 'userform' %}">Signup</a></button>
+	</nav>
+	</div>
+</body>
+</html>
